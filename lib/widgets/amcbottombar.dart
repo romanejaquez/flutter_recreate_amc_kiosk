@@ -1,3 +1,4 @@
+import 'package:amc_flutter_app/services/seatselection.service.dart';
 import 'package:amc_flutter_app/services/ticketordering.service.dart';
 import 'package:amc_flutter_app/widgets/amcroundbutton.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class AmcBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
 
     TicketOrderingService ticketOrderingService = Provider.of<TicketOrderingService>(context, listen: false);
+    SeatSelectionService seatService = Provider.of<SeatSelectionService>(context, listen: false);
     
     return Container(
         margin: EdgeInsets.only(top: 20),
@@ -35,7 +37,8 @@ class AmcBottomBar extends StatelessWidget {
                 label: 'QUIT',
                 onTap: () {
                   ticketOrderingService.resetOrder();
-                  Navigator.popUntil(context, ModalRoute.withName('/home'));
+                  seatService.resetSeatSelection();
+                  Navigator.of(context).popUntil((route) => route.settings.name == '/home');
                 }
               ),
               ],

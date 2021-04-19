@@ -11,7 +11,14 @@ class MovieSelectionService {
     _selectedMovie = value;
   }
 
-  void selectMovieTime(MovieTimeModel time) {
+  MovieTimeModel getSelectMovieTime() {
+   MovieTimeModel selectedTime = _selectedMovie.availableTimes.firstWhere((MovieTimeModel movieTime) => movieTime.isSelected);
+   return selectedTime;
+  }
 
+  void selectMovieTime(MovieTimeModel time) {
+    _selectedMovie.availableTimes.forEach((MovieTimeModel movieTime) => {
+      movieTime.isSelected = movieTime == time
+    });
   }
 }

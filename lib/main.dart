@@ -40,9 +40,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Product Sans Regular'
       ),
-      initialRoute: '/home',
+      initialRoute: '/',
       routes: {
-        '/': (context) => SplashPage(),
+        '/': (context) => SplashPage(duration: 3, goToPage: '/home'),
         '/home':  (context) => HomePage(),
         '/movielist': (context) => MovieListPage(),
         '/moviedetails': (context) => MovieDetailsPage(),

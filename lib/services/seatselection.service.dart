@@ -12,6 +12,10 @@ class SeatSelectionService extends ChangeNotifier {
 
   void resetSeatSelection() {
     _selectedSeats = [];
+    _auditoriumModel.seats.forEach((List<MovieSeat> seatRows) {
+      seatRows.forEach((MovieSeat seat) { seat.isSelected = false; });
+    });
+    notifyListeners();
   }
 
   void initializeAuditorium() {
@@ -19,8 +23,10 @@ class SeatSelectionService extends ChangeNotifier {
   }
 
   void selectSeat(MovieSeat seat) {
-    seat.isSelected = true;
-    _selectedSeats.add(seat);
-    notifyListeners();
+    if (!_selectedSeats.contains(seat)) {
+      seat.isSelected = true;
+      _selectedSeats.add(seat);
+      notifyListeners();
+    }
   }
 }

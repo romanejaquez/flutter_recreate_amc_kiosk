@@ -14,4 +14,5 @@ class AmcIcon {
   static const IconData googleWallet = const IconData(0xe916, fontFamily: _amcFont);
   static const IconData visa = const IconData(0xe917, fontFamily: _amcFont);
   static const IconData amex = const IconData(0xe918, fontFamily: _amcFont);
+  static const IconData handCard = const IconData(0xe919, fontFamily: _amcFont);
 }

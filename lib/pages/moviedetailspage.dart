@@ -21,7 +21,7 @@ class MovieDetailsPage extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Opacity(
-              opacity: 0.3,
+              opacity: 0.2,
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(image: AssetImage(selectedMovie.imgPath), fit: BoxFit.cover),
@@ -72,11 +72,14 @@ class MovieDetailsPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 40),
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text("CAST",
                                       style: TextStyle(color: Colors.white, fontSize: 20),
                                     ),
-                                    Text(selectedMovie.castInfo),
+                                    Text(selectedMovie.castInfo,
+                                      style: TextStyle(color: Colors.white, fontSize: 20),
+                                    )
                                   ],
                                 ),
                                 SizedBox(height: 40),
@@ -119,7 +122,7 @@ class MovieDetailsPage extends StatelessWidget {
                           children: List.generate(selectedMovie.availableTimes.length, (index) {
                             return GestureDetector(
                               onTap: () {
-                                selectedMovie.availableTimes[index].isSelected = true;
+                                movieService.selectMovieTime(selectedMovie.availableTimes[index]);
                                 Navigator.of(context).pushNamed('/ticketselection');
                               },
                               child: Container(

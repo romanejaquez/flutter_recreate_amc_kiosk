@@ -5,6 +5,8 @@ import 'package:amc_flutter_app/widgets/amcbottombar.dart';
 import 'package:amc_flutter_app/widgets/amcheader.dart';
 import 'package:amc_flutter_app/widgets/amcroundbutton.dart';
 import 'package:amc_flutter_app/widgets/seatselectiongrid.dart';
+import 'package:amc_flutter_app/widgets/selectedmovieheader.dart';
+import 'package:amc_flutter_app/widgets/subtotalwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +14,9 @@ class SeatSelectionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    TicketOrderingService ticketService = Provider.of<TicketOrderingService>(context, listen: false);
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Column(
@@ -19,30 +24,35 @@ class SeatSelectionPage extends StatelessWidget {
         children: [
           AmcHeader(),
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
-                  margin: EdgeInsets.only(bottom: 20),
-                  child: Row(
-                    children: [
-                      Icon(Icons.event_seat, color: AmcColors.MAIN_RED, size: 40),
-                      SizedBox(width: 10),
-                      Text('Select your seats',
-                        style: TextStyle(color: Colors.white, fontSize: 30)
-                      )
-                    ]
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SelectedMovieHeader(),
+                  Container(
+                    padding: EdgeInsets.only(top: 10, bottom: 10, left: 40, right: 40),
+                    margin: EdgeInsets.only(bottom: 10),
+                    child: Row(
+                      children: [
+                        Icon(Icons.event_seat, color: AmcColors.MAIN_RED, size: 40),
+                        SizedBox(width: 10),
+                        Text('Select your seats',
+                          style: TextStyle(color: Colors.white, fontSize: 30)
+                        )
+                      ]
+                    ),
                   ),
-                ),
-                SeatSelectionGrid()
-              ],
+                  SeatSelectionGrid(),
+                  SubTotalWidget()
+                ],
+              ),
             )
           ),
           AmcBottomBar(
             optionalButton: Consumer<SeatSelectionService>(
               builder: (context, seatService, child) {
-                return seatService.selectedSeats.length > 0 ? AmcRoundButton(
+                return seatService.selectedSeats.length == ticketService.getTotalNumberOfTickets() ? AmcRoundButton(
                   label: 'CHECKOUT',
                   onTap: () {
                     // proceed to the seats selection page

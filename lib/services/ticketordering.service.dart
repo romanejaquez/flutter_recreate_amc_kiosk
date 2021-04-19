@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class TicketOrderingService extends ChangeNotifier {
 
   TicketOrderModel _ticketOrder;
-  int maxTickets = 20;
+  int maxTickets = 5;
   int minTickets = 0;
   TicketOrderModel get ticketOrder => _ticketOrder;
 
@@ -41,6 +41,6 @@ class TicketOrderingService extends ChangeNotifier {
   }
 
   void resetOrder() {
-    _ticketOrder = null;
+    _ticketOrder = TicketOrderModel();
   }
 }

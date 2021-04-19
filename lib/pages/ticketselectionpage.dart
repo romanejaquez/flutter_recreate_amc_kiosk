@@ -5,6 +5,7 @@ import 'package:amc_flutter_app/services/ticketordering.service.dart';
 import 'package:amc_flutter_app/widgets/amcbottombar.dart';
 import 'package:amc_flutter_app/widgets/amcheader.dart';
 import 'package:amc_flutter_app/widgets/amcroundbutton.dart';
+import 'package:amc_flutter_app/widgets/subtotalwidget.dart';
 import 'package:amc_flutter_app/widgets/ticketselectiontypes.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -66,7 +67,7 @@ class TicketSelectionPage extends StatelessWidget {
                               Text(selectedMovie.title,
                                 style: TextStyle(color: Colors.white, fontSize: 40)
                               ),
-                              Text(selectedMovie.availableTimes[0].time,
+                              Text(movieService.getSelectMovieTime().time,
                                 style: TextStyle(color: Colors.white, fontSize: 25)
                               ),
                               Text('Today ${DateFormat.yMMMMEEEEd().format(DateTime.now())}',
@@ -111,7 +112,8 @@ class TicketSelectionPage extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 40),
-                      TicketSelectionTypes()
+                      TicketSelectionTypes(),
+                      SubTotalWidget()
                     ],
                   ),
                 )
