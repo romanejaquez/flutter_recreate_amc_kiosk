@@ -13,16 +13,24 @@ class CheckoutPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // header
           AmcHeader(),
+
+          // whole middle section
           Expanded(
             child: Container(
               child: Column(
                 children: [
+
+                  // timer widget
                   CheckoutTimer(
+                    seconds: 10,
                     onTimerDone: () {
                       Navigator.of(context).popUntil((route) => route.settings.name == '/home');
                     },
                   ),
+
+                  // friendly content
                   Text('Order will be cancelled in a few moments.\nPlease use the PIN Pad to complete your order',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white, fontSize: 25)
@@ -36,6 +44,8 @@ class CheckoutPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white, fontSize: 25)
                   ),
                   SizedBox(height: 50),
+
+                  // cancel custom circle button
                   AmcCircleButton(
                     label: 'Cancel',
                     icon: Icons.clear,
@@ -47,6 +57,8 @@ class CheckoutPage extends StatelessWidget {
               ),
             )
           ),
+
+          // common bottom nav bar
           AmcBottomBar()
         ]
       )

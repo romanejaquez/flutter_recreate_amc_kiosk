@@ -8,18 +8,23 @@ class AmcHeader extends StatelessWidget {
     return Container(
       height: 150,
       child: Stack(
+        // do not clip the items on this stack (for the glowing effect)
         clipBehavior: Clip.none,
         alignment: Alignment.topCenter,
         children: [
+
+          // scale and offset the top logo
           Positioned(top: -200,
           child: Transform.scale(
             scale: 1.25, 
             child: AmcLogoMain(showOnTop: true)
             )
           ),
+
+          // left payment icons
           Positioned(
-            left: 0,
-            top: 0,
+            left: 20,
+            top: 20,
             child: Row(
               children: [
                 Padding(
@@ -37,9 +42,11 @@ class AmcHeader extends StatelessWidget {
               ],
             )
           ),
+          
+          // right payment icons
           Positioned(
-            right: 0,
-            top: 0,
+            right: 20,
+            top: 20,
             child: Row(
               children: [
                 Padding(

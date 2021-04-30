@@ -9,8 +9,10 @@ import 'package:provider/provider.dart';
 class CheckoutTimer extends StatefulWidget {
 
   Function onTimerDone;
+  int seconds;
 
   CheckoutTimer({
+    this.seconds = 10,
     @required this.onTimerDone
   });
 
@@ -21,7 +23,6 @@ class CheckoutTimer extends StatefulWidget {
 class _CheckoutTimerState extends State<CheckoutTimer> {
 
   Timer checkoutTimer;
-  int counter = 10;
  
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _CheckoutTimerState extends State<CheckoutTimer> {
       if (mounted) {
         setState(() {
 
-          if (counter == 0) {
+          if (widget.seconds == 0) {
             widget.onTimerDone();
             checkoutTimer.cancel();
             ticketOrderingService.resetOrder();
@@ -41,7 +42,7 @@ class _CheckoutTimerState extends State<CheckoutTimer> {
             return;
           }
 
-          counter--;
+          widget.seconds--;
         });
       }
     });
@@ -67,7 +68,7 @@ class _CheckoutTimerState extends State<CheckoutTimer> {
               color: AmcColors.MAIN_RED,
               borderRadius: BorderRadius.circular(100)
             ),
-            child: Text('${counter.toString()}',
+            child: Text('${widget.seconds.toString()}',
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.white, fontSize: 40)
             ),

@@ -22,14 +22,21 @@ class SeatSelectionPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // header
           AmcHeader(),
+
+          // whole middle section
           Expanded(
             child: Container(
               padding: EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+
+                  // selected movie header (reusable)
                   SelectedMovieHeader(),
+
+                  // seat selection container
                   Container(
                     padding: EdgeInsets.only(top: 10, bottom: 10, left: 40, right: 40),
                     margin: EdgeInsets.only(bottom: 10),
@@ -43,12 +50,19 @@ class SeatSelectionPage extends StatelessWidget {
                       ]
                     ),
                   ),
+
+                  // seat selection grid widget
                   SeatSelectionGrid(),
+
+                  // subtotal widget (reusable)
                   SubTotalWidget()
                 ],
               ),
             )
           ),
+
+          // custom bottom nav bar, with another injected button widget
+          // for navigating to checkout page
           AmcBottomBar(
             optionalButton: Consumer<SeatSelectionService>(
               builder: (context, seatService, child) {

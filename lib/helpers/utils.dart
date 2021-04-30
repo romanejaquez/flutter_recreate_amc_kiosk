@@ -311,6 +311,8 @@ class Utils {
         return 'CHILD 2-12 yrs';
       case TicketType.Senior:
         return 'SENIOR';
+      default:
+        return 'NONE';
     }
   }
 }

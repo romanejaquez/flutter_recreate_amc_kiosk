@@ -8,7 +8,7 @@ class SubTotalWidget extends StatelessWidget {
     return Consumer<TicketOrderingService>(
       builder: (context, tService, child) {
         return Container(
-          padding: EdgeInsets.only(top: 15, bottom: 15, left: 40, right: 40),
+          padding: EdgeInsets.only(top: 10, bottom: 10, left: 40, right: 40),
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.1),
             borderRadius: BorderRadius.circular(60)
@@ -23,7 +23,7 @@ class SubTotalWidget extends StatelessWidget {
                     style: TextStyle(color: Colors.white, fontSize: 30)
                   ),
                   Text('${tService.getTotalNumberOfTickets()} Tickets Selected',
-                    style: TextStyle(color: Colors.white, fontSize: 30)
+                    style: TextStyle(color: Colors.white, fontSize: 25)
                   )
                 ],
               ),

@@ -1,6 +1,8 @@
 import 'package:amc_flutter_app/helpers/amc-colors.dart';
 import 'package:amc_flutter_app/helpers/amc-icon.dart';
 import 'package:flutter/material.dart';
+
+// ignore: must_be_immutable
 class SplashPage extends StatelessWidget {
   int duration = 0;
   String goToPage;

@@ -23,7 +23,10 @@ class TicketSelectionPage extends StatelessWidget {
       body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // header
               AmcHeader(),
+
+              // whole middle section
               Expanded(
                 child: Container(
                   padding: EdgeInsets.all(40),
@@ -34,6 +37,9 @@ class TicketSelectionPage extends StatelessWidget {
                         style: TextStyle(color: Colors.white, fontSize: 30)
                       ),
                       SizedBox(height: 40),
+                      
+                      // movie context information
+                      // display in a row
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,25 +105,46 @@ class TicketSelectionPage extends StatelessWidget {
                           )
                         ],
                       ),
+                      
+                      // spacing
                       SizedBox(height: 40),
+                      
+                      // ticket row title
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(Icons.confirmation_num, color: AmcColors.MAIN_RED, size: 40),
                           SizedBox(width: 10),
-                          Text('How many tickets?',
-                            style: TextStyle(color: Colors.white, fontSize: 30)
-                          )
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(text: 'How many tickets? ',
+                                    style: TextStyle(color: Colors.white, fontSize: 30)
+                                ),
+                                TextSpan(text: '(max. 5)',
+                                    style: TextStyle(color: Colors.white, fontSize: 20)
+                                ),
+                              ]
+                            )
+                          ) 
                         ],
                       ),
+                      
                       SizedBox(height: 40),
+                      
+                      // ticket selection type widget
                       TicketSelectionTypes(),
+                      
+                      // subtotal widget (reusable)
                       SubTotalWidget()
                     ],
                   ),
                 )
               ),
+              
+              // common bottom bar, with the ability
+              // to inject custom buttons in its layout for flexible navigation
               AmcBottomBar(
                 optionalButton: Consumer<TicketOrderingService>(
                   builder: (context, tService, child) {

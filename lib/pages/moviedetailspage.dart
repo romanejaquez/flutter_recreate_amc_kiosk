@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:amc_flutter_app/models/movie.model.dart';
 import 'package:amc_flutter_app/services/movieselection.service.dart';
 import 'package:amc_flutter_app/widgets/amcbottombar.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MovieDetailsPage extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
 
@@ -16,9 +16,13 @@ class MovieDetailsPage extends StatelessWidget {
     
     return Scaffold(
       backgroundColor: Colors.black,
+
+      // use a Stack widget to add the movie poster in the background (faded)
       body: Stack(
         fit: StackFit.expand,
         children: [
+
+          // background poster image, with blurry effect
           Positioned.fill(
             child: Opacity(
               opacity: 0.2,
@@ -35,19 +39,29 @@ class MovieDetailsPage extends StatelessWidget {
               ),
             ),
           ),
+          
+          // whole movie details content, laid out as a column
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // header
               AmcHeader(),
+
+              // middle section
               Expanded(
                 child: Container(
                   padding: EdgeInsets.all(40),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+
+                      // first row of content:
+                      // movie poster and info
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+
+                          // movie poster
                           Container(
                             width: 400,
                             height: 650,
@@ -58,7 +72,10 @@ class MovieDetailsPage extends StatelessWidget {
                               )
                             ),
                           ),
+
                           SizedBox(width: 30),
+
+                          // movie description
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,17 +126,25 @@ class MovieDetailsPage extends StatelessWidget {
                           )
                         ],
                       ),
+
+                      // available times section 
                       SizedBox(height: 40),
                       Text('AVAILABLE TIMES',
                         style: TextStyle(color: Colors.white, fontSize: 20)
                       ),
                       SizedBox(height: 20),
                       Expanded(
+
+                        // using a GridView for the available movie times
+                        // so as lay them out as a grid
                         child: GridView.count(
                           childAspectRatio: 3,
                           shrinkWrap: true,
                           crossAxisCount: 4,
                           children: List.generate(selectedMovie.availableTimes.length, (index) {
+                            
+                            // each movie time as a tappable widget
+                            // that takes user to the ticket section
                             return GestureDetector(
                               onTap: () {
                                 movieService.selectMovieTime(selectedMovie.availableTimes[index]);
@@ -148,6 +173,8 @@ class MovieDetailsPage extends StatelessWidget {
                   ),
                 ),
               ),
+
+              // common bottom navigation bar
               AmcBottomBar()
             ]
           )
