@@ -23,7 +23,7 @@ class MovieAuditoriumModel {
         seatRow.add(
           MovieSeat(
             seatLabel: seatLabels[i] + j.toString(),
-            isHandicapped: i == 3,
+            isAssisted: i == 3,
             isSelected: false
           )
         );

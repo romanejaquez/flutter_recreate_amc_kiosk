@@ -122,7 +122,7 @@ class TicketSelectionPage extends StatelessWidget {
                                 TextSpan(text: 'How many tickets? ',
                                     style: TextStyle(color: Colors.white, fontSize: 30)
                                 ),
-                                TextSpan(text: '(max. 5)',
+                                TextSpan(text: '(max. 15)',
                                     style: TextStyle(color: Colors.white, fontSize: 20)
                                 ),
                               ]

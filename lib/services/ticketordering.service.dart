@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class TicketOrderingService extends ChangeNotifier {
 
   TicketOrderModel _ticketOrder;
-  int maxTickets = 5;
+  int maxTickets = 5; // max tickets per type
   int minTickets = 0;
   TicketOrderModel get ticketOrder => _ticketOrder;
 

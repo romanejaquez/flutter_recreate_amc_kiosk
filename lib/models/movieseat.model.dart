@@ -1,13 +1,13 @@
 class MovieSeat {
   String seatLabel;
   bool isSelected;
-  bool isHandicapped;
+  bool isAssisted;
   bool isAvailable;
 
   MovieSeat({
     this.seatLabel,
     this.isSelected,
-    this.isHandicapped,
+    this.isAssisted,
     this.isAvailable = true
   });
 }

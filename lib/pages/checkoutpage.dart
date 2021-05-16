@@ -24,7 +24,7 @@ class CheckoutPage extends StatelessWidget {
 
                   // timer widget
                   CheckoutTimer(
-                    seconds: 10,
+                    seconds: 10, // number of seconds before the onTimeDone will be called
                     onTimerDone: () {
                       Navigator.of(context).popUntil((route) => route.settings.name == '/home');
                     },

@@ -73,7 +73,7 @@ class TicketSelectionTypes extends StatelessWidget {
                             },
                             child: Container(
                               padding: EdgeInsets.all(10),
-                              color: ticketModel.amount == 20 ? Colors.grey.withOpacity(0.5) : AmcColors.MAIN_PINK,
+                              color: ticketModel.amount == tService.maxTickets ? Colors.grey.withOpacity(0.5) : AmcColors.MAIN_PINK,
                               child: Icon(
                                 Icons.add, size: 50, color: Colors.white,
                               )
