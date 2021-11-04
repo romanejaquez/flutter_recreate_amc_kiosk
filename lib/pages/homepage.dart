@@ -45,6 +45,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     Future.delayed(const Duration(milliseconds: 3000), () {
       fadeAnim.forward();
     });
+
+    super.initState();
   }
 
   @override
