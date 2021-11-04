@@ -111,9 +111,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               parent: slideAnim,
               curve: Curves.easeInOut
             )),
-            child: Container(
-              color: Colors.transparent,
-              alignment: Alignment.center,
+            child: Center(
               child: AmcLogoMain()
             )
           ),
