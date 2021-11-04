@@ -41,9 +41,18 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Product Sans Regular'
       ),
       initialRoute: '/',
+      onGenerateRoute: (settings) {
+        if (settings.name == "/home")
+          return PageRouteBuilder(
+            settings: RouteSettings(name: '/home'),
+            pageBuilder: (_, __, ___) => HomePage(),
+          transitionDuration: Duration.zero  
+        );
+
+        return null;
+      },
       routes: {
         '/': (context) => SplashPage(duration: 3, goToPage: '/home'),
-        '/home':  (context) => HomePage(),
         '/movielist': (context) => MovieListPage(),
         '/moviedetails': (context) => MovieDetailsPage(),
         '/ticketselection': (context) => TicketSelectionPage(),
