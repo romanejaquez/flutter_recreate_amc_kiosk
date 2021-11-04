@@ -12,7 +12,7 @@ class MovieDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     MovieSelectionService movieService = Provider.of<MovieSelectionService>(context, listen: false);
-    MovieModel selectedMovie = movieService.selectedMovie;
+    MovieModel selectedMovie = movieService.selectedMovie!;
     
     return Scaffold(
       backgroundColor: Colors.black,
@@ -28,7 +28,7 @@ class MovieDetailsPage extends StatelessWidget {
               opacity: 0.2,
               child: Container(
                 decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage(selectedMovie.imgPath), fit: BoxFit.cover),
+                  image: DecorationImage(image: AssetImage(selectedMovie.imgPath!), fit: BoxFit.cover),
                 ),
                 child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
@@ -67,7 +67,7 @@ class MovieDetailsPage extends StatelessWidget {
                             height: 650,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage(selectedMovie.imgPath),
+                                image: AssetImage(selectedMovie.imgPath!),
                                 fit: BoxFit.cover
                               )
                             ),
@@ -80,11 +80,11 @@ class MovieDetailsPage extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(selectedMovie.title,
+                                Text(selectedMovie.title!,
                                   style: TextStyle(color: Colors.white, fontSize: 40)
                                 ),
                                 SizedBox(height: 20),
-                                Text(selectedMovie.description,
+                                Text(selectedMovie.description!,
                                   style: TextStyle(color: Colors.white, fontSize: 20)
                                 ),
                                 SizedBox(height: 40),
@@ -94,7 +94,7 @@ class MovieDetailsPage extends StatelessWidget {
                                     Text("CAST",
                                       style: TextStyle(color: Colors.white, fontSize: 20),
                                     ),
-                                    Text(selectedMovie.castInfo,
+                                    Text(selectedMovie.castInfo!,
                                       style: TextStyle(color: Colors.white, fontSize: 20),
                                     )
                                   ],
@@ -111,7 +111,7 @@ class MovieDetailsPage extends StatelessWidget {
                                           width: 2
                                         )
                                       ),
-                                      child: Text(selectedMovie.ratedInfo,
+                                      child: Text(selectedMovie.ratedInfo!,
                                         style: TextStyle(color: Colors.white, fontSize: 30)
                                       ),
                                     ),
@@ -141,13 +141,13 @@ class MovieDetailsPage extends StatelessWidget {
                           childAspectRatio: 3,
                           shrinkWrap: true,
                           crossAxisCount: 4,
-                          children: List.generate(selectedMovie.availableTimes.length, (index) {
+                          children: List.generate(selectedMovie.availableTimes!.length, (index) {
                             
                             // each movie time as a tappable widget
                             // that takes user to the ticket section
                             return GestureDetector(
                               onTap: () {
-                                movieService.selectMovieTime(selectedMovie.availableTimes[index]);
+                                movieService.selectMovieTime(selectedMovie.availableTimes![index]);
                                 Navigator.of(context).pushNamed('/ticketselection');
                               },
                               child: Container(
@@ -161,7 +161,7 @@ class MovieDetailsPage extends StatelessWidget {
                                     width: 2
                                   )
                                 ),
-                                child: Text('${selectedMovie.availableTimes[index].time}',
+                                child: Text('${selectedMovie.availableTimes![index].time}',
                                   style: TextStyle(color: Colors.white, fontSize: 20)
                                 ),
                               ),

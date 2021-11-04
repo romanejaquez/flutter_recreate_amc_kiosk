@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 class MovieListPage extends StatelessWidget {
 
   List<MovieModel> movies = Utils.getMovies();
-  MovieSelectionService movieSelection;
+  late MovieSelectionService movieSelection;
 
   // process all movies
   Widget processMovieList() {

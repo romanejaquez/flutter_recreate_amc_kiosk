@@ -2,7 +2,7 @@ import 'package:amc_flutter_app/helpers/ticket.type.dart';
 import 'package:amc_flutter_app/models/ticket.model.dart';
 
 class TicketOrderModel {
-  List<TicketModel> tickets;
+  late List<TicketModel> tickets;
 
   TicketOrderModel() {
     tickets = [];

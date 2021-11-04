@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 
 class MovieSeatWidget extends StatelessWidget {
 
-  MovieSeat seat;
-  int seatRowIndex;
+  MovieSeat? seat;
+  int? seatRowIndex;
 
   MovieSeatWidget({ this.seat, this.seatRowIndex });
   
@@ -18,7 +18,7 @@ class MovieSeatWidget extends StatelessWidget {
     SeatSelectionService seatSelection = Provider.of<SeatSelectionService>(context, listen: false);
     TicketOrderingService ticketService = Provider.of<TicketOrderingService>(context, listen: false);
     
-    Color seatColor = seat.isSelected ? AmcColors.MAIN_PINK :
+    Color seatColor = seat!.isSelected! ? AmcColors.MAIN_PINK :
       (seatRowIndex == seatSelection.auditorium.accessibleRow ? AmcColors.ACCESSIBLESEAT : AmcColors.MAIN_DARK_RED);
 
     return GestureDetector(
@@ -45,7 +45,7 @@ class MovieSeatWidget extends StatelessWidget {
                 height: 35,
                 child: seatRowIndex == seatSelection.auditorium.accessibleRow ?
                 Icon(Icons.accessible, color: Colors.white) : 
-                Text(seat.seatLabel,
+                Text(seat!.seatLabel!,
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.white)
                 ) 

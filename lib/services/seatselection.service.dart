@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 class SeatSelectionService extends ChangeNotifier {
 
-  List<MovieSeat> _selectedSeats = [];
+  List<MovieSeat?> _selectedSeats = [];
   MovieAuditoriumModel _auditoriumModel = MovieAuditoriumModel();
 
-  List<MovieSeat> get selectedSeats => _selectedSeats;
+  List<MovieSeat?> get selectedSeats => _selectedSeats;
   MovieAuditoriumModel get auditorium => _auditoriumModel;
 
   void resetSeatSelection() {
@@ -22,9 +22,9 @@ class SeatSelectionService extends ChangeNotifier {
     _auditoriumModel = MovieAuditoriumModel();
   }
 
-  void selectSeat(MovieSeat seat) {
+  void selectSeat(MovieSeat? seat) {
     if (!_selectedSeats.contains(seat)) {
-      seat.isSelected = true;
+      seat!.isSelected = true;
       _selectedSeats.add(seat);
       notifyListeners();
     }

@@ -295,14 +295,14 @@ class Utils {
 
     movieList.forEach((MovieModel movieModel) {
       movieModel.availableTimes = availableDates;
-      var parsedDuration = DateTime.parse('2021-01-01 ' + movieModel.duration);
+      var parsedDuration = DateTime.parse('2021-01-01 ' + movieModel.duration!);
       movieModel.duration = parsedDuration.hour.toString() + ' hr. ' + parsedDuration.minute.toString() + ' min.';
     });
 
     return movieList;
   }
 
-  static String getStringFromTicketType(TicketType type) {
+  static String getStringFromTicketType(TicketType? type) {
 
     switch(type) {
       case TicketType.Adult:

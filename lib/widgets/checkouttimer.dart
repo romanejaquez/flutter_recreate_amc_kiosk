@@ -13,7 +13,7 @@ class CheckoutTimer extends StatefulWidget {
 
   CheckoutTimer({
     this.seconds = 10,
-    @required this.onTimerDone
+    required this.onTimerDone
   });
 
   @override
@@ -22,7 +22,7 @@ class CheckoutTimer extends StatefulWidget {
 
 class _CheckoutTimerState extends State<CheckoutTimer> {
 
-  Timer checkoutTimer;
+  late Timer checkoutTimer;
  
   @override
   Widget build(BuildContext context) {

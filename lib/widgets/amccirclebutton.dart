@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 
 class AmcCircleButton extends StatelessWidget {
 
-  final IconData icon;
-  final String label;
+  final IconData? icon;
+  final String? label;
   Function onTap;
 
-  AmcCircleButton({ this.label, this.icon, @required this.onTap });
+  AmcCircleButton({ this.label, this.icon, required this.onTap });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: this.onTap,
+      onTap: this.onTap as void Function()?,
       child: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,7 +32,7 @@ class AmcCircleButton extends StatelessWidget {
             ),
             Container(
               width: 180, 
-              child: Text(this.label,
+              child: Text(this.label!,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30  

@@ -1,7 +1,7 @@
 class MovieSeat {
-  String seatLabel;
-  bool isSelected;
-  bool isAssisted;
+  String? seatLabel;
+  bool? isSelected;
+  bool? isAssisted;
   bool isAvailable;
 
   MovieSeat({

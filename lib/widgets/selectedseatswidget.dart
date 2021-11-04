@@ -16,7 +16,7 @@ class SelectedSeatsWidget extends StatelessWidget {
 
         List<Widget> selectedSeatsWidgets = [];
 
-        seatSelection.selectedSeats.forEach((MovieSeat seat) {
+        seatSelection.selectedSeats.forEach((MovieSeat? seat) {
           selectedSeatsWidgets.add(
             Container(
               alignment: Alignment.center,
@@ -27,7 +27,7 @@ class SelectedSeatsWidget extends StatelessWidget {
               ),
               width: 50,
               height: 50,
-              child: Text(seat.seatLabel,
+              child: Text(seat!.seatLabel!,
                 style: TextStyle(color: Colors.white, fontSize: 20)
               )
             )

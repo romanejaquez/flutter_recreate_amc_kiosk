@@ -9,14 +9,14 @@ class TicketSelectionTypes extends StatelessWidget {
   @override
   Widget build(Object context) {
     
-    TicketOrderingService ticketService = Provider.of<TicketOrderingService>(context, listen: false);
+    TicketOrderingService ticketService = Provider.of<TicketOrderingService>(context as BuildContext, listen: false);
     ticketService.createOrder();
 
     return Consumer<TicketOrderingService>(
       builder: (context, tService, child) {
 
         List<Widget> ticketRows = [];
-        tService.ticketOrder.tickets.forEach((TicketModel ticketModel) {
+        tService.ticketOrder!.tickets.forEach((TicketModel ticketModel) {
           ticketRows.add(
             Container(
               padding: EdgeInsets.only(top: 15, bottom: 15, left: 30, right: 15),
@@ -38,7 +38,7 @@ class TicketSelectionTypes extends StatelessWidget {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              tService.addTicketsToOrder(ticketModel.type, ticketModel.amount - 1);
+                              tService.addTicketsToOrder(ticketModel.type, ticketModel.amount! - 1);
                             },
                             child: Container(
                               padding: EdgeInsets.all(10),
@@ -69,7 +69,7 @@ class TicketSelectionTypes extends StatelessWidget {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              tService.addTicketsToOrder(ticketModel.type, ticketModel.amount + 1);
+                              tService.addTicketsToOrder(ticketModel.type, ticketModel.amount! + 1);
                             },
                             child: Container(
                               padding: EdgeInsets.all(10),

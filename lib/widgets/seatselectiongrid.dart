@@ -38,7 +38,7 @@ class SeatSelectionGrid extends StatelessWidget {
                 children: [
                   Container(
                     width: 40,
-                    child: Text(seatRow.first.seatLabel.characters.first,
+                    child: Text(seatRow.first.seatLabel!.characters.first,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white, fontSize: 20)
                     ),
@@ -48,7 +48,7 @@ class SeatSelectionGrid extends StatelessWidget {
                   SizedBox(width: 40),
                   Container(
                     width: 40,
-                    child: Text(seatRow.first.seatLabel.characters.first,
+                    child: Text(seatRow.first.seatLabel!.characters.first,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white, fontSize: 20)
                     ),

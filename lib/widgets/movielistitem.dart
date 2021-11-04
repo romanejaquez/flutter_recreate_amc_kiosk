@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 
 class MovieListItem extends StatelessWidget {
 
-  MovieModel movie;
-  Function onTap;
+  MovieModel? movie;
+  Function? onTap;
 
   MovieListItem({ this.movie, this.onTap });
   
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: this.onTap,
+      onTap: this.onTap as void Function()?,
       child: Container(
           child: Column(
             children: [
@@ -21,7 +21,7 @@ class MovieListItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                    image: AssetImage(movie.imgPath),
+                    image: AssetImage(movie!.imgPath!),
                     fit: BoxFit.cover
                   )
                 ),
@@ -32,7 +32,7 @@ class MovieListItem extends StatelessWidget {
               Container(
                 width: 240,
                 height: 50,
-                child: Text(movie.title,
+                child: Text(movie!.title!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -50,7 +50,7 @@ class MovieListItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50)
                 ),
                 child: Text(
-                  '${movie.availableTimes[0].time}',
+                  '${movie!.availableTimes![0].time}',
                   style: TextStyle(
                     color: Colors.white,
                   )

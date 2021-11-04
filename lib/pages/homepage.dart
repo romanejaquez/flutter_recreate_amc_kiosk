@@ -1,7 +1,6 @@
 
 
 import 'package:amc_flutter_app/helpers/amc-colors.dart';
-import 'package:amc_flutter_app/helpers/amc-icon.dart';
 import 'package:amc_flutter_app/widgets/amccirclebutton.dart';
 import 'package:amc_flutter_app/widgets/amclogomain.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +12,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  AnimationController animation;
-  AnimationController slideAnim;
-  AnimationController fadeAnim;
+  late AnimationController animation;
+  late AnimationController slideAnim;
+  late AnimationController fadeAnim;
 
   @override
   void initState() {
@@ -49,6 +48,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   @override
+  void dispose() {
+    animation.dispose();
+    slideAnim.dispose();
+    fadeAnim.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
 
     return Scaffold(
@@ -61,6 +68,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             )
           ),
           
+          // scale transition from splash
           ScaleTransition(
             alignment: Alignment.center,
             scale: Tween(
@@ -72,23 +80,29 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               curve: Curves.easeInOut
             )),
             child: Align(
-              alignment: Alignment.center,
-              child: Transform.scale(
-                scale: 3.5,
-                child: Container(
-                  
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color: AmcColors.MAIN_RED,
-                    borderRadius: BorderRadius.circular(500)
-                  ),
-                
+                alignment: Alignment.center,
+                child: Transform.scale(
+                  scale: 3.5,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: AmcColors.MAIN_RED,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 100,
+                          color: AmcColors.MAIN_RED,
+                          offset: Offset.zero
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(500)
+                    ),
+                )
               )
             )
-          )
-        ),
+          ),
 
+          // slide transition of main logo
           SlideTransition(
             position: Tween(
               begin: const Offset(0,0),
@@ -157,7 +171,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               )
             ),
           ),
-
         ],
       ),
     );

@@ -6,21 +6,17 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class SplashPage extends StatelessWidget {
-  int duration = 0;
-  String goToPage;
+  int? duration = 0;
+  String? goToPage;
 
   SplashPage({ this.goToPage, this.duration });
 
   @override 
   Widget build(BuildContext context) {
 
-    Future.delayed(Duration(seconds: this.duration), () {
+    Future.delayed(Duration(seconds: this.duration!), () {
       Navigator.of(context).
-      pushNamed(this.goToPage);
-      //   PageRouteBuilder(pageBuilder: (context, animation1, animation2) => HomePage(),
-      //   transitionDuration: Duration.zero
-      // ));
-      //pushNamed(this.goToPage);
+      pushNamed(this.goToPage!);
     });
 
     return Scaffold(

@@ -16,7 +16,7 @@ class TicketSelectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     MovieSelectionService movieService = Provider.of<MovieSelectionService>(context, listen: false);
-    MovieModel selectedMovie = movieService.selectedMovie;
+    MovieModel selectedMovie = movieService.selectedMovie!;
     
     return Scaffold(
       backgroundColor: Colors.black,
@@ -61,7 +61,7 @@ class TicketSelectionPage extends StatelessWidget {
                                 )
                               ],
                               image: DecorationImage(
-                                image: AssetImage(selectedMovie.imgPath),
+                                image: AssetImage(selectedMovie.imgPath!),
                                 fit: BoxFit.cover
                               )
                             ),
@@ -70,10 +70,10 @@ class TicketSelectionPage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(selectedMovie.title,
+                              Text(selectedMovie.title!,
                                 style: TextStyle(color: Colors.white, fontSize: 40)
                               ),
-                              Text(movieService.getSelectMovieTime().time,
+                              Text(movieService.getSelectMovieTime().time!,
                                 style: TextStyle(color: Colors.white, fontSize: 25)
                               ),
                               Text('Today ${DateFormat.yMMMMEEEEd().format(DateTime.now())}',
@@ -91,7 +91,7 @@ class TicketSelectionPage extends StatelessWidget {
                                           width: 2
                                         )
                                       ),
-                                      child: Text(selectedMovie.ratedInfo,
+                                      child: Text(selectedMovie.ratedInfo!,
                                         style: TextStyle(color: Colors.white, fontSize: 20)
                                       ),
                                     ),

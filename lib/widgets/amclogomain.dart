@@ -17,7 +17,7 @@ class AmcLogoMain extends StatefulWidget {
 
 class _AmcLogoMainState extends State<AmcLogoMain> {
 
-  Timer logoTimer;
+  late Timer logoTimer;
 
   @override
   Widget build(BuildContext context) {

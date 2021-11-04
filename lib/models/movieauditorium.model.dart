@@ -4,7 +4,7 @@ class MovieAuditoriumModel {
 
   int rows = 8;
   int cols = 8;
-  String label;
+  String? label;
   String seatLabels = "ABCDEFGH";
   int accessibleRow = 3;
 

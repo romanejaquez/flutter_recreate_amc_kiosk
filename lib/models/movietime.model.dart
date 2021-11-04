@@ -1,5 +1,5 @@
 class MovieTimeModel {
-  String time;
+  String? time;
   bool isSelected;
 
   MovieTimeModel({ this.time, this.isSelected = false});

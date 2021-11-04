@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 
 class AmcRoundButton extends StatelessWidget {
 
-  final String label;
+  final String? label;
   final Function onTap;
   bool isBackButton = false;
 
   AmcRoundButton({ 
     this.label, 
     this.isBackButton = false,
-    @required this.onTap });
+    required this.onTap });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: this.onTap,
+      onTap: this.onTap as void Function()?,
       child: Container(
         height: 200,
         child: Row(
@@ -50,7 +50,7 @@ class AmcRoundButton extends StatelessWidget {
                   )
                 )
               ),
-              child: Text(this.label,
+              child: Text(this.label!,
                 style: TextStyle(
                   fontSize: 25,
                   color: Colors.white

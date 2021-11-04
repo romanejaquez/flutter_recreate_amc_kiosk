@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 class AmcBottomBar extends StatelessWidget {
 
-  Widget optionalButton;
+  Widget? optionalButton;
 
   AmcBottomBar({ this.optionalButton });
 
@@ -31,7 +31,7 @@ class AmcBottomBar extends StatelessWidget {
             ),
             Row(
               children: [
-                this.optionalButton != null ? this.optionalButton : SizedBox(width: 0),
+                this.optionalButton != null ? this.optionalButton! : SizedBox(width: 0),
                 SizedBox(width: 20),
                 AmcRoundButton(
                 label: 'QUIT',

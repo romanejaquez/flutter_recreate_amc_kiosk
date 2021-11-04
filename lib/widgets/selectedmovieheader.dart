@@ -10,7 +10,7 @@ class SelectedMovieHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     
     MovieSelectionService movieSelection = Provider.of<MovieSelectionService>(context, listen: false);
-    MovieModel selectedMovie = movieSelection.selectedMovie;
+    MovieModel selectedMovie = movieSelection.selectedMovie!;
 
     return Container(
       margin: EdgeInsets.only(left: 40, right: 40, bottom: 20),
@@ -21,7 +21,7 @@ class SelectedMovieHeader extends StatelessWidget {
             height: 80,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(selectedMovie.imgPath),
+                image: AssetImage(selectedMovie.imgPath!),
                 fit: BoxFit.cover
               ),
               borderRadius: BorderRadius.circular(50),
@@ -43,10 +43,10 @@ class SelectedMovieHeader extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(selectedMovie.title,
+                Text(selectedMovie.title!,
                   style: TextStyle(color: Colors.white, fontSize: 30)
                 ),
-                Text(movieSelection.getSelectMovieTime().time,
+                Text(movieSelection.getSelectMovieTime().time!,
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 Text('Today ${DateFormat.yMMMMEEEEd().format(DateTime.now())}',
@@ -66,7 +66,7 @@ class SelectedMovieHeader extends StatelessWidget {
                     width: 2
                   )
                 ),
-                child: Text(selectedMovie.ratedInfo,
+                child: Text(selectedMovie.ratedInfo!,
                   style: TextStyle(color: Colors.white, fontSize: 20)
                 ),
               ),
